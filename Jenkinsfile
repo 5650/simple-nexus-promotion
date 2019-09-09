@@ -1,10 +1,11 @@
-pipeline {
+
+ipeline {
     agent none
     stages {
         stage('Retrieve') {
             agent any
             steps {
-                sh 'wget http://nexus.roundtower.io:8081/repository/rtt-snapshot/apps/add2vals/1.0/add2vals-1.0'
+                sh 'wget http://nexus.roundtower.io:8081/repository/training8-snapshot/apps/add2vals/1.0/add2vals-1.0'
                 sh 'mv add2vals-1.0 /tmp/add2vals'
             }
         }
@@ -17,7 +18,7 @@ pipeline {
                    nexusUrl: 'nexus.roundtower.io:8081',
                    groupId: 'apps',
                    version: '1.0',
-                   repository: 'rtt-release',
+                   repository: 'training8-release',
                    credentialsId: 'NexusDefault',
                    artifacts: [
                        [artifactId: 'add2vals',
